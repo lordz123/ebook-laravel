@@ -40,7 +40,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="navbar-item active">
-                                <a href="index.html" class="nav-link">Home</a>
+                                <a href="{{route('home')}}" class="nav-link">Home</a>
                             </li>
                             <li class="navbar-item">
                                 <a href="{{route('shop')}}" class="nav-link">Shop</a>
@@ -51,11 +51,18 @@
                             <li class="navbar-item">
                                 <a href="faq.html" class="nav-link">FAQ</a>
                             </li>
-                            <li class="navbar-item">
+
                                 {{-- <a href="login.html" class="nav-link">Login</a> --}}
                                 @guest
                                     @if(Route::has('login'))
+                                    <li class="navbar-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @endif
+                                    @if (Route::has('register'))
+                                        <li class="navbar-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
                                     @endif
                                 @else
                                 <li class="nav-item dropdown">
@@ -75,7 +82,7 @@
                                     </div>
                                 </li>
                                 @endguest
-                            </li>
+
                         </ul>
                         <div class="cart my-2 my-lg-0">
                             <span>
