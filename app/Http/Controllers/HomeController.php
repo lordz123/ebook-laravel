@@ -29,4 +29,8 @@ class HomeController extends Controller
     {
         return view('content.shopnow');
     }
+    public function product()
+    {
+        return view('content.product');
+    }
 }
