@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-3"><a href="#" class="web-url">www.mhedhebook.com</a></div>
                     <div class="col-md-6">
-                        <h5>Free Shipping Over $99 + 3 Free Samples With Every Order</h5></div>
+                        <h5>Christmass Sales</h5></div>
                     <div class="col-md-3">
                         <span class="ph-number">Call : 800 1234 5678</span>
                     </div>
