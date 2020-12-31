@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +19,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/shop','HomeController@shopnow')->name('shop');
 Route::get('/product','HomeController@product')->name('product');
-Route::get('/addproduct','ProductController@index')->name('add.product');
-Route::get('/storeProduct','ProductController@store')->name('store.product');
+Route::resource('product', ProductController::class);
