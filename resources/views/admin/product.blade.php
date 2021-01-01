@@ -13,15 +13,21 @@
             <th>price</th>
             <th>action</th>
         </tr>
+        @foreach($book as $books)
         <tr>
-            <td>1</td>
-            <td>img.png</td>
-            <td>7ways.pdf</td>
-            <td>dark</td>
-            <td>A book cover the dark side</td>
-            <td>$99</td>
-            <td>new action button</td>
+            <td>{{$books->id}}</td>
+            <td><img src="{{ URL::to('/') }}/images/{{ $books->cover }}" class="img-thumbnail" width="75" /></td>
+            <td><a href="{{Storage::url($books->book)}}">{{$books->book}}</a></td>
+            {{-- <td><a href="{{URL::to('/')}}/books{{$books->book}}">{{$books->book}}</a></td> --}}
+            <td>{{$books->name}}</td>
+            <td>{{$books->description}}</td>
+            <td>{{$books->price}}</td>
+            <td>
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </td>
         </tr>
+        @endforeach
     </table>
 </div>
 @endsection

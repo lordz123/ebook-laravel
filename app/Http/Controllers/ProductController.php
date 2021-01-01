@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product');
+        $book = Product::latest()->paginate(5);
+        return view('admin.product', compact('book'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -37,6 +39,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'cover' => 'required',
+            'book' => 'required|mimes:pdf',
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric'
@@ -46,8 +49,16 @@ class ProductController extends Controller
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'),$new_name);
 
+        // $uniqueFileName = $request->file('book')->getClientOriginalName() . '.' . $request->file('book')->getClientOriginalExtension();
+        // $request->get('book')->move(public_path('books') . $uniqueFileName);
+
+        $book = $request->file('book');
+        $new_book_name = rand() . '.' . $book->getClientOriginalExtension();
+        //$book->move(public_path('books'),$book);
+        $book->store('uploads');
         $data = array(
             'cover' => $new_name,
+            'book' => $new_book_name,
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price
