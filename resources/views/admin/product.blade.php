@@ -17,14 +17,14 @@
         <tr>
             <td>{{$books->id}}</td>
             <td><img src="{{ URL::to('/') }}/images/{{ $books->cover }}" class="img-thumbnail" width="75" /></td>
-            <td><a href="{{Storage::url($books->book)}}">{{$books->book}}</a></td>
-            {{-- <td><a href="{{URL::to('/')}}/books{{$books->book}}">{{$books->book}}</a></td> --}}
+            {{-- <td><a href="{{Storage::url($books->book)}}">{{$books->book}}</a></td> --}}
+            <td><a href="{{URL::to('/')}}/books/{{$books->book}}">{{$books->book}}</a></td>
             <td>{{$books->name}}</td>
             <td>{{$books->description}}</td>
             <td>{{$books->price}}</td>
             <td>
+                <a href="{{route('download',$books->book)}}" class="btn btn-primary">download</a>
                 <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
             </td>
         </tr>
         @endforeach

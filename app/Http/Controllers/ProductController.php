@@ -38,7 +38,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cover' => 'required',
+            'cover' => 'required|mimes:png,jpg',
             'book' => 'required|mimes:pdf',
             'name' => 'required',
             'description' => 'required',
@@ -49,13 +49,10 @@ class ProductController extends Controller
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('images'),$new_name);
 
-        // $uniqueFileName = $request->file('book')->getClientOriginalName() . '.' . $request->file('book')->getClientOriginalExtension();
-        // $request->get('book')->move(public_path('books') . $uniqueFileName);
-
         $book = $request->file('book');
-        $new_book_name = rand() . '.' . $book->getClientOriginalExtension();
-        //$book->move(public_path('books'),$book);
-        $book->store('uploads');
+        $new_book_name = $request->name . '.' . $book->getClientOriginalExtension();
+        $book->move(public_path('books'),$new_book_name);
+        //$new_book_name = $book->store('uploads');
         $data = array(
             'cover' => $new_name,
             'book' => $new_book_name,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -32,5 +33,13 @@ class HomeController extends Controller
     public function product()
     {
         return view('content.product');
+    }
+    public function download($book)
+    {
+        $file = public_path('/books/'.$book);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return response()->download($file, $book, $headers);
     }
 }

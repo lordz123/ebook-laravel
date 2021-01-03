@@ -20,3 +20,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/shop','HomeController@shopnow')->name('shop');
 Route::get('/product','HomeController@product')->name('product');
 Route::resource('product', ProductController::class);
+Route::get('/download/{book}','HomeController@download')->name('download');
